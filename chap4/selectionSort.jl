@@ -4,7 +4,7 @@
 
 function sortValues(A)
 #=
-Choose max value of A[0:i]
+Choose max value of A[1:i]
 Insert it to the correct position
 =#
   i = length(A)
