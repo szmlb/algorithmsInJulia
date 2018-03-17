@@ -2,7 +2,7 @@
 # Merge Sort
 #
 
-function sortValues(A)
+function mergeSort(A)
 
   Anew = copy(A)
   mergesort_array(Anew,  A,  1,  length(A)+1)
@@ -41,9 +41,24 @@ function mergesort_array(A, result, left, right)
 
 end
 
-# list to be sorted
-A = [15,  9,  8,  1,  4,  11,  7,  12,  13,  6,  5,  3,  16,  2,  10,  14]
+function main()
 
-# sorting
-@time sortValues(A)
-print(A)
+  # list to be sorted
+  rng = MersenneTwister(1234);
+  A = shuffle(rng, Vector(1:100))
+  Aorigin = copy(A)
+
+  # sorting
+  @time mergeSort(A)
+
+  print("The original list: ")
+  println(Aorigin)
+
+  print("The sorted list: ")
+  println(A)
+
+end
+
+if contains(@__FILE__, PROGRAM_FILE)
+    main()
+end

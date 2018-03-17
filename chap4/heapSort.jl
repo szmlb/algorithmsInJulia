@@ -2,7 +2,7 @@
 # Heap Sort
 #
 
-function sortValues(A)
+function heapSort(A)
 
   buildHeap(A)
 
@@ -53,9 +53,26 @@ function heapify(A, idx, idx_max)
   end
 end
 
-# list to be sorted
-A = [15,  9,  8,  1,  4,  11,  7,  12,  13,  6,  5,  3,  16,  2,  10,  14]
+function main()
 
-# sorting
-@time sortValues(A)
-print(A)
+  # list to be sorted
+  rng = MersenneTwister(1234);
+  A = shuffle(rng, Vector(1:100))
+  Aorigin = copy(A)
+
+  # sorting
+  @time heapSort(A)
+
+  print("The original list: ")
+  println(Aorigin)
+
+  print("The sorted list: ")
+  println(A)
+
+end
+
+
+
+if contains(@__FILE__, PROGRAM_FILE)
+    main()
+end
